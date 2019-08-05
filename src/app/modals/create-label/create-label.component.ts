@@ -23,7 +23,7 @@ export class CreateLabelComponent implements OnInit {
 
 	constructor(private toastCtrl: ToastController, private modalCtrl: ModalController, private _userService: UserService, private _labelService: LabelService) {
 		this.token = this._userService.getToken();
-		this.label = new Label('', '', '');
+		this.label = new Label('', '', '','');
 	}
 
 	ngOnInit() {}

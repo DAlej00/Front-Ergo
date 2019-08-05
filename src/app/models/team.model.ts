@@ -7,7 +7,9 @@ export class Team {
 			{
 				user: string;
 				rol: string;
+				supervisor:string;
 			}
-		]
+		],
+		public manager:string
 	) {}
 }

@@ -23,8 +23,8 @@ export class CreateTeamComponent implements OnInit {
 
 	constructor(private navParams: NavParams, private toastCtrl: ToastController, private modalCtrl: ModalController, private _teamService: TeamService, private _userService: UserService) {
 		this.team = new Team('', '', '', [
-			{ user: '', rol: '' }
-		]);
+			{ user: '', rol: '',supervisor:'' }
+		],'');
 		this.token = this._userService.getToken();
 	}
 
