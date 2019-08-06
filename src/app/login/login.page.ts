@@ -15,7 +15,9 @@ export class LoginPage implements OnInit {
 	email: string = '';
 	password: string = '';
 	public identity;
-	constructor(private toastCtrl: ToastController, public userService: UserService, private alertCtrl: AlertController, private router: Router, private loadingCtrl: LoadingController, private navCtrl: NavController) {}
+	constructor(private toastCtrl: ToastController, 
+		public userService: UserService, private alertCtrl: AlertController, private router: Router, 
+		private loadingCtrl: LoadingController, private navCtrl: NavController) {}
 
 	ngOnInit() {}
 
@@ -50,11 +52,11 @@ export class LoginPage implements OnInit {
 						showCloseButton: true
 					});
 					await toast.present().then(() => {
-						localStorage.setItem('name', res.foundUser.name);
-						localStorage.setItem('username', res.foundUser.username);
-						localStorage.setItem('image', res.foundUser.image);
+						localStorage.setItem('name', res.user.name);
+						localStorage.setItem('userName', res.user.userName);
+						localStorage.setItem('image', res.user.image);
 						localStorage.setItem('token', res.token);
-						this.identity = res.foundUser;
+						this.identity = res.user;
 						localStorage.setItem('identity', JSON.stringify(this.identity));
 						this.Loader('Cargando...', 2500);
 						this.router.navigate([

@@ -13,8 +13,12 @@ import { FormsModule } from '@angular/forms';
 import { SessionService } from './guards/session.service';
 import { Dialogs } from '@ionic-native/dialogs/ngx';
 
+import {Camera} from '@ionic-native/camera/ngx'
+import {FileTransfer} from '@ionic-native/file-transfer/ngx'
+import {File} from '@ionic-native/file/ngx'
 import { ColorPickerModule } from 'ngx-color-picker';
 import { CreateLabelComponent, EditLabelComponent, CreateTeamComponent, EditTeamComponent, CreateProjectComponent, EditProjectComponent } from './modals/index';
+import { EditUserComponent } from './modals/edit-user/edit-user.component';
 
 @NgModule({
 	declarations:
@@ -25,7 +29,8 @@ import { CreateLabelComponent, EditLabelComponent, CreateTeamComponent, EditTeam
 			CreateTeamComponent,
 			EditTeamComponent,
 			CreateProjectComponent,
-			EditProjectComponent
+			EditProjectComponent,
+			EditUserComponent
 		],
 	entryComponents:
 		[
@@ -34,7 +39,8 @@ import { CreateLabelComponent, EditLabelComponent, CreateTeamComponent, EditTeam
 			CreateTeamComponent,
 			EditTeamComponent,
 			CreateProjectComponent,
-			EditProjectComponent
+			EditProjectComponent,
+			EditUserComponent
 		],
 	imports:
 		[
@@ -53,6 +59,9 @@ import { CreateLabelComponent, EditLabelComponent, CreateTeamComponent, EditTeam
 			SessionService,
 			StatusBar,
 			SplashScreen,
+			Camera,
+			FileTransfer,
+			File,
 			Dialogs,
 			{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
 		],
