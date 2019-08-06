@@ -4,3 +4,4 @@ export { CreateTeamComponent } from './create-team/create-team.component';
 export { EditTeamComponent } from './edit-team/edit-team.component';
 export { CreateProjectComponent } from './create-project/create-project.component';
 export { EditProjectComponent } from './edit-project/edit-project.component';
+export {EditUserComponent} from './edit-user/edit-user.component';
