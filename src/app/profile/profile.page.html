@@ -21,9 +21,11 @@
     
         <ion-card-content style="text-align:center">
 
-          <ion-avatar style="margin:auto" *ngIf="image === 'null'" (click)="Options()">
-            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973461_640.png" style="width:200; height:200">
-          </ion-avatar>
+              <img *ngIf="identity.image" src="{{ url + 'users/image/'+identity.image }}" class="rounded-circle"
+              width="200" height="200">
+          <img src="./assets/450_1000.jpg" class="rounded-circle" width="200" height="200" *ngIf="!identity.image">
+    
+
           <br/>
 
             <h2 style="text-align:center"><b>Nombre: {{identity.name}}</b></h2>

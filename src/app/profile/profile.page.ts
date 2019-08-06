@@ -5,6 +5,7 @@ import { UserService } from '../services/user.service';
 import { ToastController, ModalController, LoadingController } from '@ionic/angular';
 import { EditUserComponent } from '../modals/edit-user/edit-user.component';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-profile',
@@ -20,6 +21,7 @@ export class ProfilePage implements OnInit {
   public user: User[];
   public token;
   public identity;
+  public url;
 
   username:string = "";
   constructor(private toastCtrl: ToastController, private modalCtrl: ModalController, 
@@ -31,6 +33,7 @@ export class ProfilePage implements OnInit {
     this.username = localStorage.getItem('username');
     this.token = _userService.getToken();
     this.identity = _userService.getIdentity();
+    this.url = environment.endpoint;
   }
 
   ngOnInit() {
