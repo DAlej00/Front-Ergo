@@ -27,7 +27,7 @@ export class CreateProjectComponent implements OnInit {
 
 	constructor(private toastCtrl: ToastController, private modalCtrl: ModalController, private _userService: UserService, private _teamService: TeamService, private _projectService: ProjectService) {
 		this.token = this._userService.getToken();
-		this.project = new Project('', '', '', '', '', '');
+		this.project = new Project('', '', '', '', '');
 	}
 
 	ngOnInit() {
