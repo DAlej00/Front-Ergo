@@ -11,9 +11,20 @@
     <ion-card>
     
       <ion-card-content>
-        <img src="http://movilarena.com/wp-content/uploads/todo_list.jpg">
+          <img *ngIf="user.image" src="{{ url + 'users/image/'+user.image }}" class="rounded-circle"
+          width="200" height="200">
+      <img src="./assets/450_1000.jpg" class="rounded-circle" width="200" height="200" *ngIf="!user.image">
+
+        <br/>
         
+        <div class="input-group-prepend" style="border:solid black 0.5px; border-radius: 2px">
+            <span class="input-group-text" id="inputGroupFileAddon01" style="color: black;text-align: center; font-size: 25px;font-family: 'Times New Roman', Times, serif">Subir foto</span>
         
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile01"
+                aria-describedby="inputGroupFileAddon01" (change)="fileChangeEvent($event)">
+        </div>
+      </div>
         <br/>
   
         

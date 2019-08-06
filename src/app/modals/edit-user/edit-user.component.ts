@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model';
 import { NavParams, ToastController, ModalController } from '@ionic/angular';
+import { UploadService } from 'src/app/services/upload.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-edit-user',
@@ -13,12 +15,16 @@ import { NavParams, ToastController, ModalController } from '@ionic/angular';
 })
 export class EditUserComponent implements OnInit {
   public token;
+  public identity;
   public user:User;
+  public url;
   
-  constructor(private navParams: NavParams, private toastCtrl: ToastController, private modalCtrl: ModalController, private _userService: UserService) {
+  constructor(private navParams: NavParams, private toastCtrl: ToastController, private modalCtrl: ModalController, private _userService: UserService,     private _uploadService:UploadService    ) {
 		this.user = this.navParams.get('user');
 		this.token = this._userService.getToken();
-	}
+    this.url = environment.endpoint;
+    this.identity = this._userService.getIdentity();
+  }
 
   ngOnInit() {}
 
@@ -34,6 +40,14 @@ export class EditUserComponent implements OnInit {
 		} else {
 			this._userService.editUser(this.user, this.token).subscribe(async res => {
 				if (res.user) {
+          if(this.change){
+            this._uploadService.
+            makeFileRequest(this.url+'users/subirImagen',[],this.filesToUpload,this.token,'image').then((result:any)=>{
+              console.log(result);
+              this.user.image = result.user.image;
+              this.change = false;
+            })
+          }
 					let toast = await this.toastCtrl.create({
 						message: 'Perfil editado exitosamente',
 						duration: 2500,
@@ -54,7 +68,16 @@ export class EditUserComponent implements OnInit {
 				}
 			});
 		}
-	}
+  }
+  
+  public filesToUpload: Array<File>;
+  public change: boolean = false;
+  fileChangeEvent(fileInput: any) {
+    this.filesToUpload = <Array<File>>fileInput.target.files;
+    this.change = true;
+    console.log(this.filesToUpload);
+    
+  }
 
 	cancel() {
 		this.modalCtrl.dismiss();
