@@ -25,7 +25,7 @@
 
     <ion-item-sliding *ngFor="let l of labels">
 
-      
+
       <ion-item>
         <ion-fab-button [ngStyle]="{'background': l.color}" color="transparent" size="small" slot="start"
           disabled="true"></ion-fab-button>
@@ -34,7 +34,7 @@
         </ion-label>
         <ion-button (click)="editLabel(l)" fill="outline" slot="end">Editar</ion-button>
       </ion-item>
-
+      
       <ion-item-options side="end">
         <button ion-button color="secondary" (click)="confirmDelete(l._id)">
           <ion-icon name="trash"></ion-icon>

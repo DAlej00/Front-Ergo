@@ -35,6 +35,11 @@ export class AppComponent {
 			title: 'Labels',
 			url: '/label',
 			icon: 'bookmark'
+		},
+		{
+			title:'Notes',
+			url:'/notes',
+			icon: 'today'
 		}
 	];
 

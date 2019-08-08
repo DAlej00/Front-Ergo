@@ -9,23 +9,28 @@ import { CreateTeamComponent, EditTeamComponent } from '../modals/index';
 @Component({
 	selector: 'app-teams',
 	templateUrl: './teams.page.html',
-	styleUrls:
-		[
-			'./teams.page.scss'
-		],
-	providers:
-		[
-			TeamService,
-			UserService
-		]
+	styleUrls: ['./teams.page.scss'],
+	providers: [
+		TeamService,
+		UserService
+	]
 })
 export class TeamsPage implements OnInit {
 	public token;
 	public identity;
 	public status;
 	public teams: Team;
-	constructor(private router: Router, private _teamService: TeamService, private toastCtrl: ToastController, private modalCtrl: ModalController, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private _userService: UserService) {
+	constructor(
+		private router: Router,
+		private _teamService: TeamService,
+		private toastCtrl: ToastController,
+		private modalCtrl: ModalController,
+		private alertCtrl: AlertController,
+		private loadingCtrl: LoadingController,
+		private _userService: UserService
+	) {
 		this.token = this._userService.getToken();
+		this.identity = this._userService.getIdentity();
 	}
 
 	ngOnInit() {
@@ -68,10 +73,9 @@ export class TeamsPage implements OnInit {
 	async editTeam(team) {
 		let modal = await this.modalCtrl.create({
 			component: EditTeamComponent,
-			componentProps:
-				{
-					team: team
-				}
+			componentProps: {
+				team: team
+			}
 		});
 		await modal.present();
 		const data = await modal.onDidDismiss();
@@ -79,7 +83,6 @@ export class TeamsPage implements OnInit {
 	}
 
 	async deleteTeam(id) {
-		console.log(id);
 		this._teamService.deleteTeam(id, this.token).subscribe(async res => {
 			if (res.team) {
 				let toast = await this.toastCtrl.create({
