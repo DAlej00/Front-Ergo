@@ -23,7 +23,7 @@
   <ion-item>
     <ion-label position="floating">Equipo del proyecto</ion-label>
     <ion-select placeholder="Seleccione un equipo" name="developerTeam" [(ngModel)]="project.developerTeam">
-      <ion-select-option *ngFor="let t of teams" value="{{t._id}}" >{{t.name}}</ion-select-option>
+      <ion-select-option *ngFor="let t of team" value="{{t._id}}" >{{t.name}}</ion-select-option>
     </ion-select>
   </ion-item>
 

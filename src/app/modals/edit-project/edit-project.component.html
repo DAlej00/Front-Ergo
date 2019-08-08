@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-      Agregar Proyecto
+      Editar Proyecto
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,6 +12,9 @@
 
 
   <ion-item>
+      <ion-label position="floating">Nombre del proyecto</ion-label>
+      <ion-input name="description" [(ngModel)]="project.name" shape="round" clearInput
+        placeholder="Ingrese el nombre del Proyecto" required="true"></ion-input>
     <ion-label position="floating">Descripcion del proyecto</ion-label>
     <ion-input name="description" [(ngModel)]="project.description" shape="round" clearInput
       placeholder="Ingrese una descripcion para el equipo" required="true"></ion-input>

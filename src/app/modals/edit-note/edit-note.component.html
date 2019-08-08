@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>
+        Editar Notes
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  
+      <h2 style="text-align: center; text-transform: uppercase;">{{notes.title}}</h2>
+
+
+    <ion-item>
+      <ion-label position="floating">Titulo de la nota</ion-label>
+      <ion-input name="name" [(ngModel)]="notes.title" shape="round" clearInput
+        placeholder="Ingrese el titulo de la nota" required="true"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Contenido de la nota</ion-label>
+      <ion-input name="color"  [(ngModel)]="notes.content" shape="round" clearInput
+        placeholder="Ingresar el contenido de la nota" required="true"></ion-input>
+    </ion-item>
+  
+  
+    <ion-button color="secondary" expand="block" shape="round" type="submit" fill="outline" (click)="update()">Actualizar</ion-button>
+    <ion-button color="secondary" expand="block" shape="round" type="submit" fill="outline" (click)="cancel()">Cancelar</ion-button>
+  
+  </ion-content>

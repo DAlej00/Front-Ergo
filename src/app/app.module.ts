@@ -19,6 +19,8 @@ import {File} from '@ionic-native/file/ngx'
 import { ColorPickerModule } from 'ngx-color-picker';
 import { CreateLabelComponent, EditLabelComponent, CreateTeamComponent, EditTeamComponent, CreateProjectComponent, EditProjectComponent } from './modals/index';
 import { EditUserComponent } from './modals/edit-user/edit-user.component';
+import { CreateNoteComponent } from './modals/create-note/create-note.component';
+import { EditNoteComponent } from './modals/edit-note/edit-note.component';
 
 @NgModule({
 	declarations:
@@ -30,7 +32,9 @@ import { EditUserComponent } from './modals/edit-user/edit-user.component';
 			EditTeamComponent,
 			CreateProjectComponent,
 			EditProjectComponent,
-			EditUserComponent
+			EditUserComponent,
+			CreateNoteComponent,
+			EditNoteComponent
 		],
 	entryComponents:
 		[
@@ -40,7 +44,9 @@ import { EditUserComponent } from './modals/edit-user/edit-user.component';
 			EditTeamComponent,
 			CreateProjectComponent,
 			EditProjectComponent,
-			EditUserComponent
+			EditUserComponent,
+			CreateNoteComponent,
+			EditNoteComponent
 		],
 	imports:
 		[

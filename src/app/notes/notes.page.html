@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button>
+        </ion-menu-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button (click)="logOut()">Salir</ion-button>
+      </ion-buttons>
+      <ion-title>
+        Notas
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+    <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Jale para recargar" refreshingSpinner="bubbles"
+          refreshingText="Cargando...">
+        </ion-refresher-content>
+      </ion-refresher>
+    
+      <ion-list><br>
+    
+        <ion-item-sliding *ngFor="let n of notes">
+    
+          
+          <ion-item>
+            <ion-label>
+              <h2>{{n.title}}</h2>
+              <p>{{n.content}}</p>
+            </ion-label>
+            <ion-button (click)="editNote(n)" fill="outline" slot="end">Editar</ion-button>
+          </ion-item>
+    
+          <ion-item-options side="end">
+            <button ion-button color="secondary" (click)="confirmDelete(n._id)">
+              <ion-icon name="trash"></ion-icon>
+              Borrar
+            </button>
+          </ion-item-options>
+    
+        </ion-item-sliding>
+      </ion-list>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="success">
+          <ion-icon (click)="createNote()" name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+</ion-content>
