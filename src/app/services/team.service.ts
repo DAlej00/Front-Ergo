@@ -49,11 +49,17 @@ export class TeamService {
 
 	public addMember(token, team: Team, idUser, idSupervisor): Observable<any> {
 		let headers = this.headers.set('Authorization', token);
-		return this._http.put(this.endpoint + 'teams/' + team._id + '/integrant/' + idUser + '/supervisor/' + idSupervisor, { headers: headers }).pipe(map(this.extractData));
+		let teamB = JSON.stringify(team);
+		return this._http.put(this.endpoint + 'teams/' + team._id + '/integrant/' + idUser + '/supervisor/' + idSupervisor, teamB, { headers: headers }).pipe(map(this.extractData));
 	}
 
 	public deleteMember(token, team: Team, idUser, idSupervisor): Observable<any> {
 		let headers = this.headers.set('Authorization', token);
 		return this._http.delete(this.endpoint + 'teams/' + team._id + '/integrant/' + idUser + '/supervisor/' + idSupervisor, { headers: headers }).pipe(map(this.extractData));
+	}
+
+	public getTeam(id, token): Observable<any> {
+		let headers = this.headers.set('Authorization', token);
+		return this._http.get(this.endpoint + 'teams/' + id, { headers: headers }).pipe(map(this.extractData));
 	}
 }

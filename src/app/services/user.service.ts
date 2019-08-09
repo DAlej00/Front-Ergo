@@ -29,20 +29,20 @@ export class UserService {
 		return this.http.post(this.endpoint + 'users/login', params, this.httpOptions).pipe(map(this.extractData));
 	}
 
-	public getRegistre(token):Observable<any>{
-		let headers= this.headers.set('Authorization', token);
-		return this.http.get(this.endpoint+'users/',{headers:headers});
+	public getRegistre(token): Observable<any> {
+		let headers = this.headers.set('Authorization', token);
+		return this.http.get(this.endpoint + 'users/', { headers: headers });
 	}
 
-	public editUser(user:User,token):Observable<any>{
+	public editUser(user: User, token): Observable<any> {
 		let params = JSON.stringify(user);
-		let headers= this.headers.set('Authorization', token);
-		return this.http.put(this.endpoint+'users/'+user._id,params,{headers:headers})
+		let headers = this.headers.set('Authorization', token);
+		return this.http.put(this.endpoint + 'users/' + user._id, params, { headers: headers });
 	}
 
-	public deleteUser(id, token):Observable<any>{
-		let headers= this.headers.set('Authorization', token);
-		return this.http.delete(this.endpoint+'users/'+id,{headers:headers});
+	public deleteUser(id, token): Observable<any> {
+		let headers = this.headers.set('Authorization', token);
+		return this.http.delete(this.endpoint + 'users/' + id, { headers: headers });
 	}
 
 	public Register(user): Observable<any> {
@@ -56,5 +56,10 @@ export class UserService {
 
 	public getIdentity() {
 		return localStorage.getItem('identity');
+	}
+
+	public getUsers(token): Observable<any> {
+		let headers = this.headers.set('Authorization', token);
+		return this.http.get(this.endpoint + 'users/all', { headers: headers }).pipe(map(this.extractData));
 	}
 }

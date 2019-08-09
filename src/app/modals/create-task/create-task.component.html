@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Agregar Tarea
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label position="floating">Nombre de la tarea</ion-label>
+    <ion-input name="name" [(ngModel)]="task.name" shape="round" clearInput
+      placeholder="Ingrese un nombre para la tarea" required="true"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Descripción de la tarea</ion-label>
+    <ion-input name="name" [(ngModel)]="task.description" shape="round" clearInput placeholder="Ingrese una descripción para la tarea"
+      required="true"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>MM/DD/YY</ion-label>
+    <ion-datetime name="deadline" [(ngModel)]="task.deadline" displayFormat="MM DD YY" placeholder="Elija la fecha"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Etiquetas de la tarea</ion-label>
+    <ion-select multiple="true" placeholder="Seleccione una etiqueta" name="labels" [(ngModel)]="task.labels">
+      <ion-select-option *ngFor="let l of labels" value="{{l._id}}">{{l.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Encargado de la tarea</ion-label>
+    <ion-select placeholder="Seleccione un miembro del equipo" name="labels" [(ngModel)]="task.taskOwner">
+      <ion-select-option *ngFor="let m of members" value="{{m._id}}">{{m.user.username}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button color="secondary" expand="block" shape="round" type="submit" fill="outline" (click)="create()">Crear
+  </ion-button>
+  <ion-button color="secondary" expand="block" shape="round" type="submit" fill="outline" (click)="cancel()">Cancelar
+  </ion-button>
+
+</ion-content>

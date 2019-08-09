@@ -1,16 +1,20 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
     <ion-buttons slot="end">
-        <ion-button (click)="logOut()">Salir</ion-button>
-      </ion-buttons>
-    <ion-title>Projects</ion-title>
+      <ion-button (click)="logOut()">Salir</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Tasks
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
 <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" (ionRefresh)="doRefresh($event)">
   <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Jale para recargar" refreshingSpinner="bubbles"
     refreshingText="Cargando...">
@@ -19,20 +23,19 @@
 
 <ion-list><br>
 
-  <ion-item-sliding *ngFor="let p of projects">
+  <ion-item-sliding *ngFor="let t of tasks">
 
 
     <ion-item>
       <ion-label>
-        <h2>{{p.name}}</h2>
-        <p>{{p.description}}</p>
+        <h2>{{t.name}}</h2>
+        <p>{{t.description}}</p>
       </ion-label>
-        <ion-button (click)="tasks(p._id)" fill="outline" slot="end">Tareas</ion-button>
-        <ion-button (click)="editProject(p)" fill="outline" slot="end">Editar</ion-button>
+        <ion-button (click)="editProject(t)" fill="outline" slot="end">Editar</ion-button>
     </ion-item>
 
     <ion-item-options side="end">
-      <button ion-button color="secondary" (click)="confirmDelete(p._id)">
+      <button ion-button color="secondary" (click)="confirmDelete(t._id)">
         <ion-icon name="trash"></ion-icon>
         Borrar
       </button>
@@ -42,9 +45,9 @@
 </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="success">
-      <ion-icon (click)="createProject()" name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+      <ion-fab-button color="success">
+        <ion-icon (click)="createTask()" name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
 
 </ion-content>

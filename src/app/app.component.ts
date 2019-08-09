@@ -40,11 +40,6 @@ export class AppComponent {
 			title: 'Notes',
 			url: '/notes',
 			icon: 'today'
-		},
-		{
-			title: 'notifications',
-			url: '/notifications',
-			icon: 'notifications'
 		}
 	];
 

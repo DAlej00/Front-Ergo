@@ -54,6 +54,12 @@ export class ProjectsPage implements OnInit {
 		]);
 	}
 
+	tasks(id) {
+		this.router.navigate([
+			'tasks/' + id
+		]);
+	}
+
 	async createProject() {
 		const modal = await this.modalCtrl.create({
 			component: CreateProjectComponent

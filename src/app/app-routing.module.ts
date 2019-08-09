@@ -70,7 +70,7 @@ const routes: Routes = [
 				AuthGuardService
 			]
 	},
-	{ path: 'notifications', loadChildren: './notifications/notifications.module#NotificationsPageModule' }
+	{ path: 'tasks/:id', loadChildren: './tasks/tasks.module#TasksPageModule' }
 ];
 
 @NgModule({

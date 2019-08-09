@@ -13,11 +13,11 @@ import { FormsModule } from '@angular/forms';
 import { SessionService } from './guards/session.service';
 import { Dialogs } from '@ionic-native/dialogs/ngx';
 
-import {Camera} from '@ionic-native/camera/ngx'
-import {FileTransfer} from '@ionic-native/file-transfer/ngx'
-import {File} from '@ionic-native/file/ngx'
+import { Camera } from '@ionic-native/camera/ngx';
+import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import { File } from '@ionic-native/file/ngx';
 import { ColorPickerModule } from 'ngx-color-picker';
-import { CreateLabelComponent, EditLabelComponent, CreateTeamComponent, EditTeamComponent, CreateProjectComponent, EditProjectComponent } from './modals/index';
+import { CreateLabelComponent, EditLabelComponent, CreateTeamComponent, EditTeamComponent, CreateProjectComponent, EditProjectComponent, CreateTaskComponent, EditTaskComponent } from './modals/index';
 import { EditUserComponent } from './modals/edit-user/edit-user.component';
 import { CreateNoteComponent } from './modals/create-note/create-note.component';
 import { EditNoteComponent } from './modals/edit-note/edit-note.component';
@@ -36,7 +36,9 @@ import { AddMemberComponent } from './modals/add-member/add-member.component';
 			EditUserComponent,
 			CreateNoteComponent,
 			EditNoteComponent,
-			AddMemberComponent
+			AddMemberComponent,
+			CreateTaskComponent,
+			EditTaskComponent
 		],
 	entryComponents:
 		[
@@ -49,7 +51,9 @@ import { AddMemberComponent } from './modals/add-member/add-member.component';
 			EditUserComponent,
 			CreateNoteComponent,
 			EditNoteComponent,
-			AddMemberComponent
+			AddMemberComponent,
+			CreateTaskComponent,
+			EditTaskComponent
 		],
 	imports:
 		[

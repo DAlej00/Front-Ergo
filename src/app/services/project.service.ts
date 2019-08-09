@@ -46,4 +46,9 @@ export class ProjectService {
 		let headers = this.headers.set('Authorization', token);
 		return this._http.delete(this.endpoint + 'projects/' + id, { headers: headers }).pipe(map(this.extractData));
 	}
+
+	public getProject(id, token): Observable<any> {
+		let headers = this.headers.set('Authorization', token);
+		return this._http.get(this.endpoint + 'projects/' + id, { headers: headers }).pipe(map(this.extractData));
+	}
 }

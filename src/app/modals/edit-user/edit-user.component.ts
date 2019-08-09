@@ -6,30 +6,34 @@ import { UploadService } from 'src/app/services/upload.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-edit-user',
-  templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.scss'],
-  providers:[
-    UserService
-  ]
+	selector: 'app-edit-user',
+	templateUrl: './edit-user.component.html',
+	styleUrls:
+		[
+			'./edit-user.component.scss'
+		],
+	providers:
+		[
+			UserService
+		]
 })
 export class EditUserComponent implements OnInit {
-  public token;
-  public identity;
-  public user:User;
-  public url;
-  
-  constructor(private navParams: NavParams, private toastCtrl: ToastController, private modalCtrl: ModalController, private _userService: UserService,     private _uploadService:UploadService    ) {
+	public token;
+	public identity;
+	public user: User;
+	public url;
+
+	constructor(private navParams: NavParams, private toastCtrl: ToastController, private modalCtrl: ModalController, private _userService: UserService, private _uploadService: UploadService) {
 		this.user = this.navParams.get('user');
 		this.token = this._userService.getToken();
-    this.url = environment.endpoint;
-    this.identity = this._userService.getIdentity();
-  }
+		this.url = environment.endpoint;
+		this.identity = this._userService.getIdentity();
+	}
 
-  ngOnInit() {}
+	ngOnInit() {}
 
-  async update() {
-		if (this.user.name == '' || this.user.userName == '') {
+	async update() {
+		if (this.user.name == '' || this.user.username == '') {
 			let toast = await this.toastCtrl.create({
 				message: 'Necesita llenar todos los campos',
 				duration: 2500,
@@ -40,14 +44,13 @@ export class EditUserComponent implements OnInit {
 		} else {
 			this._userService.editUser(this.user, this.token).subscribe(async res => {
 				if (res.user) {
-          if(this.change){
-            this._uploadService.
-            makeFileRequest(this.url+'users/subirImagen',[],this.filesToUpload,this.token,'image').then((result:any)=>{
-              console.log(result);
-              this.user.image = result.user.image;
-              this.change = false;
-            })
-          }
+					if (this.change) {
+						this._uploadService.makeFileRequest(this.url + 'users/subirImagen', [], this.filesToUpload, this.token, 'image').then((result: any) => {
+							console.log(result);
+							this.user.image = result.user.image;
+							this.change = false;
+						});
+					}
 					let toast = await this.toastCtrl.create({
 						message: 'Perfil editado exitosamente',
 						duration: 2500,
@@ -68,16 +71,15 @@ export class EditUserComponent implements OnInit {
 				}
 			});
 		}
-  }
-  
-  public filesToUpload: Array<File>;
-  public change: boolean = false;
-  fileChangeEvent(fileInput: any) {
-    this.filesToUpload = <Array<File>>fileInput.target.files;
-    this.change = true;
-    console.log(this.filesToUpload);
-    
-  }
+	}
+
+	public filesToUpload: Array<File>;
+	public change: boolean = false;
+	fileChangeEvent(fileInput: any) {
+		this.filesToUpload = <Array<File>>fileInput.target.files;
+		this.change = true;
+		console.log(this.filesToUpload);
+	}
 
 	cancel() {
 		this.modalCtrl.dismiss();
