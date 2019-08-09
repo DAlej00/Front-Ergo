@@ -5,6 +5,7 @@ import { TeamService } from '../services/team.service';
 import { ToastController, ModalController, AlertController, LoadingController } from '@ionic/angular';
 import { UserService } from '../services/user.service';
 import { CreateTeamComponent, EditTeamComponent } from '../modals/index';
+import { AddMemberComponent } from '../modals/add-member/add-member.component';
 
 @Component({
 	selector: 'app-teams',
@@ -56,9 +57,7 @@ export class TeamsPage implements OnInit {
 
 	logOut() {
 		localStorage.clear();
-		this.router.navigate([
-			'/login'
-		]);
+		this.router.navigate(['/login']);
 	}
 
 	async createTeam() {
@@ -68,6 +67,20 @@ export class TeamsPage implements OnInit {
 		await modal.present();
 		const data = await modal.onDidDismiss();
 		if (data.data !== undefined) this.getTeams();
+	}
+
+	async members(team) {
+		let modal = await this.modalCtrl.create({
+			component: AddMemberComponent,
+			componentProps: {
+				team: team
+			}
+		});
+		await modal.present();
+		const data = await modal.onDidDismiss();
+		if (data.data !== undefined) {
+			this.getTeams(); console.log(data.data);
+		}
 	}
 
 	async editTeam(team) {
@@ -112,20 +125,18 @@ export class TeamsPage implements OnInit {
 			header: 'Eliminar equipo',
 			message: '¿Está seguro de eliminar el equipo?',
 			buttons:
-				[
-					{
-						text: 'Cancelar',
-						role: 'cancel',
-						cssClass: 'secondary'
-					},
-					{
-						text: 'Si',
-						handler:
-							() => {
-								this.deleteTeam(id);
-							}
-					}
-				]
+				[{
+					text: 'Cancelar',
+					role: 'cancel',
+					cssClass: 'secondary'
+				},
+				{
+					text: 'Si',
+					handler:
+						() => {
+							this.deleteTeam(id);
+						}
+				}]
 		});
 		await alert.present();
 	}

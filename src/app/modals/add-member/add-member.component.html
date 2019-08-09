@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Integrantes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list><br>
+    <ion-item-sliding *ngFor="let i of team.integrants">
+      <ion-item>
+        <ion-label>
+          <h2>{{i.lastName}}, {{i.firstName}}</h2>
+          <p>{{i.username}}</p>
+          <p>{{i.email}}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <button ion-button color="secondary" (click)="confirmDelete(i._id)">
+          <ion-icon name="trash"></ion-icon>
+          Borrar
+        </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+  <ion-item>
+    <ion-label position="floating">Usuario</ion-label>
+    <ion-select placeholder="Seleccione un usuario" name="idUser" [(ngModel)]="idUser">
+      <ion-select-option *ngFor="let u of users" value="{{u._id}}" >{{u.username}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Supervisor</ion-label>
+    <ion-select placeholder="Seleccione un supervisor" name="idSupervisor" [(ngModel)]="idSupervisor">
+      <ion-select-option *ngFor="let u of users" value="{{u._id}}" >{{u.username}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button color="secondary" expand="block" shape="round" type="submit" fill="outline" (click)="add()">Agregar
+  </ion-button>
+  <ion-button color="secondary" expand="block" shape="round" type="submit" fill="outline" (click)="cancel()">Cancelar
+  </ion-button>
+  <ion-button color="secondary" expand="block" shape="round" type="submit" fill="outline" (click)="close()">Cerrar
+  </ion-button>
+
+</ion-content>
