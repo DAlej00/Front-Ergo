@@ -37,9 +37,14 @@ export class AppComponent {
 			icon: 'bookmark'
 		},
 		{
-			title:'Notes',
-			url:'/notes',
+			title: 'Notes',
+			url: '/notes',
 			icon: 'today'
+		},
+		{
+			title: 'notifications',
+			url: '/notifications',
+			icon: 'notifications'
 		}
 	];
 

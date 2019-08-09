@@ -62,13 +62,15 @@ const routes: Routes = [
 				AuthGuardService
 			]
 	},
-  { path: 'notes', 
-  loadChildren: './notes/notes.module#NotesPageModule',
-	canActivate:[
-		AuthGuardService
-	]
-	}
-
+	{
+		path: 'notes',
+		loadChildren: './notes/notes.module#NotesPageModule',
+		canActivate:
+			[
+				AuthGuardService
+			]
+	},
+	{ path: 'notifications', loadChildren: './notifications/notifications.module#NotificationsPageModule' }
 ];
 
 @NgModule({

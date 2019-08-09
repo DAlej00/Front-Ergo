@@ -15,15 +15,15 @@
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">Descripcion del proyecto</ion-label>
+    <ion-label position="floating">Descripción del proyecto</ion-label>
     <ion-input name="description" [(ngModel)]="project.description" shape="round" clearInput
-      placeholder="Ingrese una descripcion para el equipo" required="true"></ion-input>
+      placeholder="Ingrese una descripción para el equipo" required="true"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Equipo del proyecto</ion-label>
     <ion-select placeholder="Seleccione un equipo" name="developerTeam" [(ngModel)]="project.developerTeam">
-      <ion-select-option *ngFor="let t of team" value="{{t._id}}" >{{t.name}}</ion-select-option>
+      <ion-select-option *ngFor="let t of teams" value="{{t._id}}" >{{t.name}}</ion-select-option>
     </ion-select>
   </ion-item>
 

@@ -44,7 +44,7 @@ export class TeamService {
 
 	public getUserTeams(token): Observable<any> {
 		let headers = this.headers.set('Authorization', token);
-		return this._http.get(this.endpoint + 'teams/user', { headers: headers }).pipe(map(this.extractData));
+		return this._http.get(this.endpoint + 'teams/user/created', { headers: headers }).pipe(map(this.extractData));
 	}
 
 	public addMember(token, team: Team, idUser, idSupervisor): Observable<any> {

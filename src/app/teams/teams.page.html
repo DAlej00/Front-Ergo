@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button (click)="cerrar()">Cerrar</ion-button>
+      <ion-button (click)="logOut()">Salir</ion-button>
     </ion-buttons>
     <ion-title>Equipos</ion-title>
   </ion-toolbar>
@@ -17,11 +17,11 @@
           refreshingText="Cargando...">
         </ion-refresher-content>
       </ion-refresher>
-    
+
       <ion-list><br>
-    
+
         <ion-item-sliding *ngFor="let t of teams">
-          
+
           <ion-item>
             <ion-label>
               <h2>{{t.name}}</h2>
@@ -30,17 +30,17 @@
             <ion-button (click)="members(t)" fill="outline" slot="end">Integrantes</ion-button>
             <ion-button (click)="editTeam(t)" fill="outline" slot="end">Editar</ion-button>
           </ion-item>
-    
+
           <ion-item-options side="end">
             <button ion-button color="secondary" (click)="confirmDelete(t._id)">
               <ion-icon name="trash"></ion-icon>
               Borrar
             </button>
           </ion-item-options>
-    
+
         </ion-item-sliding>
       </ion-list>
-    
+
       <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button color="success">
           <ion-icon (click)="createTeam()" name="add"></ion-icon>

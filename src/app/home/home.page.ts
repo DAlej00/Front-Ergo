@@ -2,24 +2,33 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+	selector: 'app-home',
+	templateUrl: 'home.page.html',
+	styleUrls:
+		[
+			'home.page.scss'
+		]
 })
 export class HomePage {
+	constructor(private router: Router) {}
 
-  constructor(private router: Router) {}
+	logOut() {
+		localStorage.clear();
+		this.router.navigate([
+			'/login'
+		]);
+	}
 
-  LogOut(){
-    console.log(localStorage.getItem('token'))
-  }
+	Profile() {
+		this.router.navigate([
+			'/profile'
+		]);
+	}
 
-  Profile(){
-    this.router.navigate(['/profile'])
-  }
-
-  cerrar(){
-    localStorage.clear()
-    this.router.navigate(['/login'])
-  }
+	cerrar() {
+		localStorage.clear();
+		this.router.navigate([
+			'/login'
+		]);
+	}
 }

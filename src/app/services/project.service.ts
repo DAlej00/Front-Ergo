@@ -20,11 +20,11 @@ export class ProjectService {
 		return res || [] || {};
 	}
 
-	getTeams(token):Observable<any>{
+	getTeams(token): Observable<any> {
 		let headers = this.headers.set('Authorization', token);
-		return this._http.get(this.endpoint + 'teams/user/created',{headers:headers}).pipe(map(this.extractData));
+		return this._http.get(this.endpoint + 'teams/user/created', { headers: headers }).pipe(map(this.extractData));
 	}
-	
+
 	getProjects(token): Observable<any> {
 		let headers = this.headers.set('Authorization', token);
 		return this._http.get(this.endpoint + 'projects/', { headers: headers }).pipe(map(this.extractData));
@@ -33,7 +33,7 @@ export class ProjectService {
 	public addProject(token, project: Project): Observable<any> {
 		let headers = this.headers.set('Authorization', token);
 		let params = JSON.stringify(project);
-		return this._http.post(this.endpoint + 'projects', params, { headers: headers }).pipe(map(this.extractData));
+		return this._http.post(this.endpoint + 'projects/', params, { headers: headers }).pipe(map(this.extractData));
 	}
 
 	public editProject(project: Project, token): Observable<any> {
