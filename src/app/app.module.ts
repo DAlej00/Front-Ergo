@@ -21,6 +21,7 @@ import { CreateLabelComponent, EditLabelComponent, CreateTeamComponent, EditTeam
 import { EditUserComponent } from './modals/edit-user/edit-user.component';
 import { CreateNoteComponent } from './modals/create-note/create-note.component';
 import { EditNoteComponent } from './modals/edit-note/edit-note.component';
+import { AddMemberComponent } from './modals/add-member/add-member.component';
 
 @NgModule({
 	declarations:
@@ -34,7 +35,8 @@ import { EditNoteComponent } from './modals/edit-note/edit-note.component';
 			EditProjectComponent,
 			EditUserComponent,
 			CreateNoteComponent,
-			EditNoteComponent
+			EditNoteComponent,
+			AddMemberComponent
 		],
 	entryComponents:
 		[
@@ -46,7 +48,8 @@ import { EditNoteComponent } from './modals/edit-note/edit-note.component';
 			EditProjectComponent,
 			EditUserComponent,
 			CreateNoteComponent,
-			EditNoteComponent
+			EditNoteComponent,
+			AddMemberComponent
 		],
 	imports:
 		[
